@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="/static/java.js"></script>
+    <link rel="stylesheet" type="text/css" href="/static/style.css" />
+    <title>Super VLSM IP Subnet Calculator</title>
+  </head>
+  <body>
+    <header class="headerout">
+    
+      <h1 class="web_name">VLSM Subnet Calculator</h1>
+    </header>
+    <div class="container">
+       
+      <div class="left-container">
+       
+      </div>
+        <div class="middle-container">
+          <form method="post" onsubmit="return validateForm()">
+            <label for="class_choice">Select Network Class:</label>
+              <select id="class_choice" name="class_choice" onchange="updateSubnetMaskOptions(this.value)">
+                <option value="Class A">Class A (1-126)</option>
+                <option value="Class B">Class B (128-191)</option>
+                <option value="Class C">Class C (192-223)</option>
+              </select>
+            <label for="ip_address">Enter IP Address:</label style="width=200px;">
+            <input type="text" name="ip_address" id="ip_address"><br>
+            <label for="prefix_length">Select Subnet Mask:</label>
+              <select id="prefix_length" name="prefix_length" style="width: 200px;">
+              </select>
+              <br><br>
+            <input type="submit" value="Submit" id="submitButton"><br><br>
+            
+          </form>
+        </div>
+        <div class="right-container">
+
+        </div>
+    </div>
+    <script>
+        updateSubnetMaskOptions('Class A');
+
+    </script>
+    
+      <h2>VLSM Subnetting explained</h2>
+      <div class="explanation">
+        <p class="explain_paragraph">
+          VLSM (Variable Length Subnet Masking) is a crucial concept in network administration that allows network administrators to divide IP addresses into subnets of different sizes. VLSM offers a flexible and efficient way to manage network resources, ensuring that IP addresses are used optimally and improving network security.<br><br>
+
+          As a powerful tool for subnetting, VLSM helps organizations to make the most of their IP address space by allowing them to create subnets that meet the specific needs of different departments, applications, or user groups. With VLSM, network administrators can create subnets of different sizes to accommodate varying numbers of hosts, which helps to optimize network performance and reduce the risk of IP address exhaustion.<br><br> 
+      
+          <B>Super VLSM IP Calculator</B>
+          <br><br>
+          This tool will calculate the subnet mask, network address, broadcast address, and host range for a given IP address and prefix length. Class A, Class B, and Class C networks are the three classes of IP addresses used in IP addressing and subnetting. They are defined by the first octet of the IP address, with each class having a different range of possible values for the first octet. <br><br>
+      
+          <b>Class A</b> IP addresses have a range of 1 to 126 in the first octet and are used for very large networks. The first octet is used as the network ID, while the remaining three octets are used as the host ID. Class A networks have a default subnet mask of 255.0.0.0, which allows for up to 126 unique networks and 16,777,214 hosts per network. <br><br>
+      
+          <b>Class B</b> IP addresses have a range of 128 to 191 in the first octet and are used for medium-sized networks. The first two octets are used as the network ID, while the remaining two octets are used as the host ID. Class B networks have a default subnet mask of 255.255.0.0, which allows for up to 16,384 unique networks and 65,534 hosts per network.<br><br>
+      
+          <b>Class C</b> IP addresses have a range of 192 to 223 in the first octet and are used for small networks. The first three octets are used as the network ID, while the last octet is used as the host ID. Class C networks have a default subnet mask of 255.255.255.0, which allows for up to 2,097,152 unique networks and 254 hosts per network.<br><br>
+
+          <b>Here are a few examples of how Class A, Class B, and Class C networks can be divided up:</b><br><br>
+
+          <b>Class A:</b> If a Class A network with the IP address 10.0.0.0 is divided into 8 subnets, each subnet can have a network ID of 10.0.0.0, 10.1.0.0, 10.2.0.0, and so on, up to 10.7.0.0. Each subnet would have 16,777,214 hosts available.<br><br>
+
+          <b>Class B:</b> If a Class B network with the IP address 172.16.0.0 is divided into 4 subnets, each subnet can have a network ID of 172.16.0.0, 172.16.1.0, 172.16.2.0, and so on, up to 172.16.3.0. Each subnet would have 65,534 hosts available.<br><br>
+
+          <b>Class C:</b> If a Class C network with the IP address 192.168.0.0 is divided into 2 subnets, each subnet can have a network ID of 192.168.0.0 and 192.168.1.0. Each subnet would have 254 hosts available.<br><br>
+        </p>
+      </div>
+    <h2>Subnetting Charts</h2>
+    <h4>Class A Subnetting chart</h4>
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover">
+      <tr><td>CIDR</td><td> Subnet mask</td><td> Network bits</td><td> Host bits	</td><td>Networks</td><td> Block Size/Total Hosts	</td><td>Usable Hosts</td></tr>
+      <tr><td>/8</td><td> 255.0.0.0</td><td> 0	</td><td>24</td><td> 1</td><td> 16777216</td><td> 16777214</td></tr>
+      <tr><td>/9</td><td> 255.128.0.0	</td><td>1	</td><td>23</td><td> 2</td><td> 8388608</td><td> 8388606</td></tr>
+      <tr><td>/10</td><td> 255.192.0.0	</td><td>2</td><td> 22</td><td> 4	</td><td>4194304</td><td> 4194302</td></tr>
+      <tr><td>/11</td><td> 255.224.0.0	</td><td>3</td><td> 21</td><td> 8	</td><td>2097152</td><td> 2097150</td></tr>
+      <tr><td>/12	</td><td>255.240.0.0</td><td> 4	</td><td>20</td><td> 16</td><td> 1048576</td><td> 1048574</td></tr>
+      <tr><td>/13</td><td> 255.248.0.0</td><td> 5	</td><td>19</td><td> 32</td><td> 524288</td><td> 524286</td></tr>
+      <tr><td>/14</td><td> 255.252.0.0</td><td> 6</td><td> 18</td><td> 64	</td><td>262144	</td><td>262142</td></tr>
+      <tr><td>/15</td><td> 255.254.0.0</td><td> 7</td><td> 17</td><td> 128</td><td> 131072	</td><td>131070</td></tr>
+      <tr><td>/16</td><td> 255.255.0.0</td><td> 8</td><td> 16</td><td> 256	</td><td>65536	</td><td>65534</td></tr>
+      <tr><td>/17</td><td> 255.255.128.0</td><td> 9</td><td> 15</td><td> 512</td><td> 32768</td><td> 32766</td></tr>
+      <tr><td>/18</td><td> 255.255.192.0</td><td> 10</td><td> 14</td><td> 1024</td><td> 16384	</td><td>16382</td></tr>
+      <tr><td>/19</td><td> 255.255.224.0</td><td> 11</td><td> 13</td><td> 2048</td><td> 8192</td><td> 8190</td></tr>
+      <tr><td>/20	</td><td>255.255.240.0</td><td> 12</td><td> 12</td><td> 4096</td><td> 4096	</td><td>4094</td></tr>
+      <tr><td>/21</td><td> 255.255.248.0</td><td> 13</td><td> 11</td><td> 8192</td><td> 2048</td><td> 2046</td></tr>
+      <tr><td>/22</td><td> 255.255.252.0</td><td> 14	</td><td>10</td><td> 16384</td><td> 1024</td><td> 1022</td></tr>
+      <tr><td>/23</td><td> 255.255.254.0</td><td> 15	</td><td>9	</td><td>32768</td><td> 512</td><td> 510</td></tr>
+      <tr><td>/24</td><td> 255.255.255.0</td><td> 16</td><td> 8	</td><td>65536</td><td> 256</td><td> 254</td></tr>
+      <tr><td>/25</td><td> 255.255.255.128</td><td> 17</td><td> 7	</td><td>131072</td><td> 128	</td><td>126</td></tr>
+      <tr><td>/26</td><td> 255.255.255.192</td><td> 18</td><td> 6</td><td> 262144</td><td> 64</td><td> 62</td></tr>
+      <tr><td>/27</td><td> 255.255.255.224</td><td> 19</td><td> 5</td><td> 524288</td><td> 32</td><td> 30</td></tr>
+      <tr><td>/28</td><td> 255.255.255.240</td><td> 20</td><td> 4</td><td> 1048576</td><td> 16</td><td> 14</td></tr>
+      <tr><td>/29</td><td> 255.255.255.248</td><td> 21</td><td> 3</td><td> 2097152</td><td> 8</td><td> 6</td></tr>
+      <tr><td>/30</td><td> 255.255.255.252</td><td> 22</td><td> 2</td><td> 4194304</td><td> 4</td><td> 2</td></tr>
+      </table></div>
+      <h4>Class B Subnetting chart</h4>
+      <div class="table-responsive">
+      <table class="table table-bordered table-hover">
+      <tr><td>CIDR</td><td> Subnet mask</td><td> Network bits</td><td> Host bits</td><td> Networks	</td><td>Block Size/Total Hosts	</td><td>Usable Hosts</td></tr>
+      <tr><td>/16</td><td> 255.255.0.0</td><td> 0</td><td> 16</td><td> 1	</td><td>65536	</td><td>65534</td></tr>
+      <tr><td>/17</td><td> 255.255.128.0</td><td> 1</td><td> 15</td><td> 2</td><td> 32768	</td><td>32766</td></tr>
+      <tr><td>/18	</td><td>255.255.192.0	</td><td>2	</td><td>14	</td><td>4	</td><td>16384	</td><td>16382</td></tr>
+      <tr><td>/19	</td><td>255.255.224.0	</td><td>3	</td><td>13	</td><td>8	</td><td>8192	</td><td>8190 </td></tr>
+      <tr><td>/20	</td><td>255.255.240.0	</td><td>4	</td><td>12	</td><td>16	</td><td>4096	</td><td>4094</td></tr>
+      <tr><td>/21	</td><td>255.255.248.0	</td><td>5	</td><td>11	</td><td>32	</td><td>2048	</td><td>2046</td></tr>
+      <tr><td>/22	</td><td>255.255.252.0	</td><td>6	</td><td>10	</td><td>64	</td><td>1024	</td><td>1022</td></tr>
+      <tr><td>/23	</td><td>255.255.254.0	</td><td>7	</td><td>9	</td><td>128	</td><td>512	</td><td>510</td></tr>
+      <tr><td>/24	</td><td>255.255.255.0	</td><td>8	</td><td>8	</td><td>256	</td><td>256	</td><td>254</td></tr>
+      <tr><td>/25	</td><td>255.255.255.128	</td><td>9	</td><td>7	</td><td>512	</td><td>128	</td><td>126</td></tr>
+      <tr><td>/26	</td><td>255.255.255.192	</td><td>10	</td><td>6	</td><td>1024	</td><td>64	</td><td>62</td></tr>
+      <tr><td>/27	</td><td>255.255.255.224	</td><td>11	</td><td>5	</td><td>2048	</td><td>32	</td><td>30</td></tr>
+      <tr><td>/28	</td><td>255.255.255.240	</td><td>12	</td><td>4	</td><td>4096	</td><td>16	</td><td>14</td></tr>
+      <tr><td>/29	</td><td>255.255.255.248	</td><td>13	</td><td>3	</td><td>8192	</td><td>8	</td><td>6</td></tr>
+      <tr><td>/30	</td><td>255.255.255.252	</td><td>14	</td><td>2	</td><td>16384	</td><td>4	</td><td>2</td></tr>
+      </table></div>
+      <h4>Class C Subnetting chart</h4>
+      <div class="table-responsive">
+      <table class="table table-bordered table-hover">
+      <tr><td>CIDR	</td><td>Subnet mask	</td><td>Network bits	</td><td>Host bits	</td><td>Networks	</td><td>Block Size/Total Hosts</td><td> Usable Hosts</td></tr>
+      <tr><td>/24</td><td> 255.255.255.0	</td><td>0	</td><td>8	</td><td>1	</td><td>256	</td><td>254</td></tr>
+      <tr><td>/25</td><td> 255.255.255.128</td><td> 1</td><td> 7</td><td> 2</td><td> 128</td><td> 126</td></tr>
+      <tr><td>/26</td><td> 255.255.255.192</td><td> 2</td><td> 6</td><td> 4</td><td> 64</td><td> 62</td></tr>
+      <tr><td>/27</td><td> 255.255.255.224</td><td> 3	</td><td>5	</td><td>8	</td><td>32</td><td> 30</td></tr>
+      <tr><td>/28	</td><td>255.255.255.240</td><td> 4</td><td> 4</td><td> 16</td><td> 16</td><td> 14</td></tr>
+      <tr><td>/29</td><td> 255.255.255.248</td><td> 5</td><td> 3</td><td> 32</td><td> 8	</td><td>6</td></tr>
+      <tr><td>/30</td><td> 255.255.255.252</td><td> 6	</td><td>2	</td><td>64</td><td> 4</td><td> 2</td></tr>
+      </table></div>
+  </body>
+</html>

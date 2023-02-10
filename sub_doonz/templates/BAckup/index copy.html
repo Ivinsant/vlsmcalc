@@ -1,0 +1,95 @@
+<html>
+  <head>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/static/style.css" />
+    <title>Super IP Subnet Calculator</title>
+  </head>
+  <body>
+    <h1>Super IP Subnet Calculator</h1>
+    <form method="post">
+      <label for="class_choice">Select Network Class:</label>
+        <select id="class_choice" name="class_choice" onchange="updateSubnetMaskOptions(this.value)">
+          <option value="Class A">Class A (1-126)</option>
+          <option value="Class B">Class B (128-191)</option>
+          <option value="Class C">Class C (192-223)</option>
+        </select>
+      <label for="ip_address">IP Address:</label style="width=200px;">
+      <input type="text" name="ip_address" id="ip_address"><br><br>
+      <label for="prefix_length">Subnet Mask:</label>
+        <select id="prefix_length" name="prefix_length" style="width: 200px;">
+        </select>
+        <br><br>
+      <input type="submit" value="Submit">
+    </form>
+    <script>
+      const subnetMaskOptions = {
+        'Class A': [
+          { value: '255.255.255.252', prefix: '/30' },
+          { value: '255.255.255.248', prefix: '/29' },
+          { value: '255.255.255.240', prefix: '/28' },
+          { value: '255.255.255.224', prefix: '/27' },
+          { value: '255.255.255.192', prefix: '/26' },
+          { value: '255.255.255.128', prefix: '/25' },
+          { value: '255.255.255.0', prefix: '/24' },
+          { value: '255.255.254.0', prefix: '/23' },
+          { value: '255.255.252.0', prefix: '/22' },
+          { value: '255.255.248.0', prefix: '/21' },
+          { value: '255.255.240.0', prefix: '/20' },
+          { value: '255.255.224.0', prefix: '/19' },
+          { value: '255.255.192.0', prefix: '/18' },
+          { value: '255.255.128.0', prefix: '/17' },
+          { value: '255.255.0.0', prefix: '/16' },
+          { value: '255.254.0.0', prefix: '/15' },
+          { value: '255.252.0.0', prefix: '/14' },
+          { value: '255.248.0.0', prefix: '/13' },
+          { value: '255.240.0.0', prefix: '/12' },
+          { value: '255.224.0.0', prefix: '/11' },
+          { value: '255.192.0.0', prefix: '/10' },
+          { value: '255.128.0.0', prefix: '/9' },
+          { value: '255.0.0.0', prefix: '/8' },
+          // ...
+        ],
+        'Class B': [
+          { value: '255.255.255.252', prefix: '/30' },
+          { value: '255.255.255.248', prefix: '/29' },
+          { value: '255.255.255.240', prefix: '/28' },
+          { value: '255.255.255.224', prefix: '/27' },
+          { value: '255.255.255.192', prefix: '/26' },
+          { value: '255.255.255.128', prefix: '/25' },
+          { value: '255.255.255.0', prefix: '/24' },
+          { value: '255.255.254.0', prefix: '/23' },
+          { value: '255.255.252.0', prefix: '/22' },
+          { value: '255.255.248.0', prefix: '/21' },
+          { value: '255.255.240.0', prefix: '/20' },
+          { value: '255.255.224.0', prefix: '/19' },
+          { value: '255.255.192.0', prefix: '/18' },
+          { value: '255.255.128.0', prefix: '/17' },
+          { value: '255.255.0.0', prefix: '/16' },
+        ],
+        'Class C': [
+        { value: '255.255.255.252', prefix: '/30' },
+          { value: '255.255.255.248', prefix: '/29' },
+          { value: '255.255.255.240', prefix: '/28' },
+          { value: '255.255.255.224', prefix: '/27' },
+          { value: '255.255.255.192', prefix: '/26' },
+          { value: '255.255.255.128', prefix: '/25' },
+          { value: '255.255.255.0', prefix: '/24' },
+          // ...
+        ],
+      };
+      
+      function updateSubnetMaskOptions(classChoice) {
+        const select = document.querySelector('#prefix_length');
+        select.innerHTML = '';
+        subnetMaskOptions[classChoice].forEach((option) => {
+          const optionElement = document.createElement('option');
+          optionElement.value = option.value;
+          optionElement.text = `${option.value} ${option.prefix}`;
+          select.appendChild(optionElement);
+        });
+      }
+      
+      updateSubnetMaskOptions('Class A');
+    </script>
+  </body>
+</html>

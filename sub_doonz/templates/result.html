@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="/static/java.js"></script>
+    <link rel="stylesheet" type="text/css" href="/static/style.css" />
+    <title>Super VLSM IP Subnet Calculator - Result</title>
+    
+  </head>
+  <body>
+    <header class="headerout">
+      <h1 class="web_name">VLSM Subnet Calculator</h1>
+    </header>
+    <h2 style="text-align:center;">Super VLSM IP Subnet Calculator - Result</h2>
+    <form>
+    <table>
+      <tr>
+        <th>Property</th>
+        <th>Value</th>
+      </tr>
+      <tr>
+        <td>IP Address:</td>
+        <td>{{ ip_address }}</td>
+      </tr>
+      <tr>
+        <td>Network Address/CIDR:</td>
+        <td>{{ subnet_bitmap }}</td>
+      </tr>
+      <tr>
+        <td>Usable Host Range:</td>
+        <td>{{ host_range }}</td>
+      </tr>
+      <tr>
+        <td>Subnet Mask:</td>
+        <td>{{ subnet_mask }}</td>
+      </tr>
+      <tr>
+        <td>First Available Address:</td>
+        <td>{{ gateway_ip }}</td>
+      </tr>
+      <tr>
+        <td>Broadcast Address:</td>
+        <td>{{ broadcast_address }}</td>
+      </tr>
+      <tr>
+        <td>Subnet Range:</td>
+        <td>{{ subnet_range }}</td>
+      </tr>
+      <tr>
+        <td>Usable Hosts:</td>
+        <td>{{ usable_hosts }}</td>
+      </tr>
+      <tr>
+        <td>Total Hosts:</td>
+        <td>{{ total_hosts }}</td>
+      </tr>
+      <tr>
+        <td>Wildcard Mask:</td>
+        <td>{{ wildcard_mask }}</td>
+      </tr>
+      <tr>
+        <td>Hexadecimal IP:</td>
+        <td>{{ hexadecimal_ip }}</td>
+      </tr>
+    </table>
+    </form>
+    <div class="container">
+      <button class="show_ip">Show Host List </button>
+      <button class="back_home" onclick="location.href='/'"> Enter New IP </button>
+    </div>
+    <div class="ip-list-container" style="display:none;">
+      <h2>IP List</h2>
+      <div class="ip-list" style="height:200px; overflow-y:scroll;">
+        {% for ip in host_address_range %}
+          <p style="margin: 0; padding: 2px;">{{ ip }}</p>
+        {% endfor %}
+      </div>
+      <button class="copy-btn">Copy All</button>
+    </div>
+  </body>
+</html>

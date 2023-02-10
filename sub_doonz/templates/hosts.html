@@ -1,0 +1,23 @@
+<html>
+    <body>
+    <h2>Host Address Range:</h2>
+    <div class="container">
+        {% if host_address_range %}
+    
+        <ul class="myUL">
+            {% for host in host_address_range %}
+            <li>{{ host }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% if error %}
+        <h2>Error:</h2>
+        <p>{{ error }}</p>
+        {% endif %}
+    </div>        
+
+
+
+        
+    </body>
+</html>

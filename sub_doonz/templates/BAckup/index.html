@@ -1,0 +1,49 @@
+<!-- index.html -->
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="/static/style.css" />
+    <title>Super IP Subnet Calculator</title>
+  </head>
+  <body>
+    <h1>Super IP Subnet Calculator</h1>
+    <form method="post">
+      <label for="class_choice">Select Network Class:</label>
+        <select id="class_choice" name="class_choice">
+          <option value="Class A">Class A (1-126)</option>
+          <option value="Class B">Class B (128-191)</option>
+          <option value="Class C">Class C (192-223)</option>
+        </select>
+      <label for="ip_address">IP Address:</label style="width=200px;">
+      <input type="text" name="ip_address" id="ip_address"><br><br>
+      <label for="prefix_length">Subnet Mask:</label>
+        <select id="prefix_length" name="prefix_length" style="width: 200px;">
+        <option value="255.255.255.252">255.255.255.252 /30</option>
+        <option value="255.255.255.248">255.255.255.248 /29</option>
+        <option value="255.255.255.240">255.255.255.240 /28</option>
+        <option value="255.255.255.224">255.255.255.224 /27</option>
+        <option value="255.255.255.192">255.255.255.192 /26</option>
+        <option value="255.255.255.128">255.255.255.128 /25</option>
+        <option value="255.255.255.0">255.255.255.0 /24</option>
+        <option value="255.255.254.0">255.255.254.0 /23</option>
+        <option value="255.255.252.0">255.255.252.0 /22</option>
+        <option value="255.255.248.0">255.255.248.0 /21</option>
+        <option value="255.255.240.0">255.255.240.0 /20</option>
+        <option value="255.255.224.0">255.255.224.0 /19</option>
+        <option value="255.255.192.0">255.255.192.0 /18</option>
+        <option value="255.255.128.0">255.255.128.0 /17</option>
+        <option value="255.255.0.0">255.255.0.0 /16</option>
+        <option value="255.254.0.0">255.254.0.0 /15</option>
+        <option value="255.252.0.0">255.252.0.0 /14</option>
+        <option value="255.248.0.0">255.248.0.0 /13</option>
+        <option value="255.240.0.0">255.240.0.0 /12</option>
+        <option value="255.224.0.0">255.224.0.0 /11</option>
+        <option value="255.192.0.0">255.192.0.0 /10</option>
+        <option value="255.128.0.0">255.128.0.0 /9</option>
+        <option value="255.0.0.0">255.0.0.0 /8</option>
+        </select>
+        <br><br>
+      <input type="submit" value="Submit">
+    </form>
+    
+  </body>
+</html>
